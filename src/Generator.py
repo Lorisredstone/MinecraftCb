@@ -6,10 +6,68 @@ BRA_O, BRA_F, BACKSLASH = "{", "}", "\\"
 print_color = lambda text, color, level : f"tellraw @a {BRA_O}{BACKSLASH*2**(level) if level else ''}\"text{BACKSLASH*2**(level) if level else ''}\":{BACKSLASH*2**(level) if level else ''}\"%s{BACKSLASH*2**(level) if level else ''}\",{BACKSLASH*2**(level) if level else ''}\"color{BACKSLASH*2**(level) if level else ''}\":{BACKSLASH*2**(level) if level else ''}\"%s{BACKSLASH*2**(level) if level else ''}\"{BRA_F}" % (text, color)
 
 STACK_PUSH:List[str] = [
-    "setblock ~ ~-2 ~5 command_block[facing=south]{auto:0,Command:\"say\"} destroy",
     "setblock ~ ~-1 ~4 command_block[facing=up]{auto:0,Command:\"setblock ~ ~-1 ~ air\"} destroy",
-    "setblock ~0 ~-2 ~6 chain_command_block[conditional=false,facing=south]{auto:1b,Command:\"scoreboard players add INST_COUNT constants 1\"} destroy",
-    "setblock ~0 ~-2 ~7 chain_command_block[conditional=false,facing=south]{auto:1b,Command:\"setblock ~-4 ~ ~-3 minecraft:redstone_block\"} destroy",
+    "setblock ~ ~-2 ~5 command_block[facing=south]{auto:0,Command:\"say\"} destroy",
+    "setblock ~0 ~-2 ~6 chain_command_block[conditional=false,facing=south]{auto:1b,Command:\"setblock ~ ~ ~1 redstone_block\"} destroy",
+    
+    "setblock ~0 ~-1 ~7 repeating_command_block[conditional=false,facing=west]{auto:1b,Command:\"execute if score ELEMENT9 stack matches 0 run setblock ~ ~-1 ~ air\"} destroy",
+    "setblock ~-1 ~-1 ~7 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"setblock ~1 ~-1 ~1 minecraft:redstone_block\"} destroy",
+    "setblock ~-1 ~-2 ~7 repeating_command_block[conditional=false,facing=west]{auto:0b,Command:\"execute if score ELEMENT9 stack > 0 constants run scoreboard players remove ELEMENT9 stack 1\"} destroy",
+    # "setblock ~-2 ~-2 ~7 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"scoreboard players add ELEMENT9 stack 1\"} destroy",
+    
+    "setblock ~0 ~-1 ~8 repeating_command_block[conditional=false,facing=west]{auto:1b,Command:\"execute if score ELEMENT8 stack matches 0 run setblock ~ ~-1 ~ air\"} destroy",
+    "setblock ~-1 ~-1 ~8 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"setblock ~1 ~-1 ~1 minecraft:redstone_block\"} destroy",
+    "setblock ~-1 ~-2 ~8 repeating_command_block[conditional=false,facing=west]{auto:0b,Command:\"execute if score ELEMENT8 stack > 0 constants run scoreboard players remove ELEMENT8 stack 1\"} destroy",
+    "setblock ~-2 ~-2 ~8 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"scoreboard players add ELEMENT9 stack 1\"} destroy",
+    
+    "setblock ~0 ~-1 ~9 repeating_command_block[conditional=false,facing=west]{auto:1b,Command:\"execute if score ELEMENT7 stack matches 0 run setblock ~ ~-1 ~ air\"} destroy",
+    "setblock ~-1 ~-1 ~9 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"setblock ~1 ~-1 ~1 minecraft:redstone_block\"} destroy",
+    "setblock ~-1 ~-2 ~9 repeating_command_block[conditional=false,facing=west]{auto:0b,Command:\"execute if score ELEMENT7 stack > 0 constants run scoreboard players remove ELEMENT7 stack 1\"} destroy",
+    "setblock ~-2 ~-2 ~9 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"scoreboard players add ELEMENT8 stack 1\"} destroy",
+    
+    "setblock ~0 ~-1 ~10 repeating_command_block[conditional=false,facing=west]{auto:1b,Command:\"execute if score ELEMENT6 stack matches 0 run setblock ~ ~-1 ~ air\"} destroy",
+    "setblock ~-1 ~-1 ~10 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"setblock ~1 ~-1 ~1 minecraft:redstone_block\"} destroy",
+    "setblock ~-1 ~-2 ~10 repeating_command_block[conditional=false,facing=west]{auto:0b,Command:\"execute if score ELEMENT6 stack > 0 constants run scoreboard players remove ELEMENT6 stack 1\"} destroy",
+    "setblock ~-2 ~-2 ~10 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"scoreboard players add ELEMENT7 stack 1\"} destroy",
+    
+    "setblock ~0 ~-1 ~11 repeating_command_block[conditional=false,facing=west]{auto:1b,Command:\"execute if score ELEMENT5 stack matches 0 run setblock ~ ~-1 ~ air\"} destroy",
+    "setblock ~-1 ~-1 ~11 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"setblock ~1 ~-1 ~1 minecraft:redstone_block\"} destroy",
+    "setblock ~-1 ~-2 ~11 repeating_command_block[conditional=false,facing=west]{auto:0b,Command:\"execute if score ELEMENT5 stack > 0 constants run scoreboard players remove ELEMENT5 stack 1\"} destroy",
+    "setblock ~-2 ~-2 ~11 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"scoreboard players add ELEMENT6 stack 1\"} destroy",
+    
+    "setblock ~0 ~-1 ~12 repeating_command_block[conditional=false,facing=west]{auto:1b,Command:\"execute if score ELEMENT4 stack matches 0 run setblock ~ ~-1 ~ air\"} destroy",
+    "setblock ~-1 ~-1 ~12 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"setblock ~1 ~-1 ~1 minecraft:redstone_block\"} destroy",
+    "setblock ~-1 ~-2 ~12 repeating_command_block[conditional=false,facing=west]{auto:0b,Command:\"execute if score ELEMENT4 stack > 0 constants run scoreboard players remove ELEMENT4 stack 1\"} destroy",
+    "setblock ~-2 ~-2 ~12 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"scoreboard players add ELEMENT5 stack 1\"} destroy",
+    
+    "setblock ~0 ~-1 ~13 repeating_command_block[conditional=false,facing=west]{auto:1b,Command:\"execute if score ELEMENT3 stack matches 0 run setblock ~ ~-1 ~ air\"} destroy",
+    "setblock ~-1 ~-1 ~13 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"setblock ~1 ~-1 ~1 minecraft:redstone_block\"} destroy",
+    "setblock ~-1 ~-2 ~13 repeating_command_block[conditional=false,facing=west]{auto:0b,Command:\"execute if score ELEMENT3 stack > 0 constants run scoreboard players remove ELEMENT3 stack 1\"} destroy",
+    "setblock ~-2 ~-2 ~13 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"scoreboard players add ELEMENT4 stack 1\"} destroy",
+    
+    "setblock ~0 ~-1 ~14 repeating_command_block[conditional=false,facing=west]{auto:1b,Command:\"execute if score ELEMENT2 stack matches 0 run setblock ~ ~-1 ~ air\"} destroy",
+    "setblock ~-1 ~-1 ~14 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"setblock ~1 ~-1 ~1 minecraft:redstone_block\"} destroy",
+    "setblock ~-1 ~-2 ~14 repeating_command_block[conditional=false,facing=west]{auto:0b,Command:\"execute if score ELEMENT2 stack > 0 constants run scoreboard players remove ELEMENT2 stack 1\"} destroy",
+    "setblock ~-2 ~-2 ~14 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"scoreboard players add ELEMENT3 stack 1\"} destroy",
+    
+    "setblock ~0 ~-1 ~15 repeating_command_block[conditional=false,facing=west]{auto:1b,Command:\"execute if score ELEMENT1 stack matches 0 run setblock ~ ~-1 ~ air\"} destroy",
+    "setblock ~-1 ~-1 ~15 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"setblock ~1 ~-1 ~1 minecraft:redstone_block\"} destroy",
+    "setblock ~-1 ~-2 ~15 repeating_command_block[conditional=false,facing=west]{auto:0b,Command:\"execute if score ELEMENT1 stack > 0 constants run scoreboard players remove ELEMENT1 stack 1\"} destroy",
+    "setblock ~-2 ~-2 ~15 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"scoreboard players add ELEMENT2 stack 1\"} destroy",
+    
+    "setblock ~0 ~-1 ~16 repeating_command_block[conditional=false,facing=west]{auto:1b,Command:\"execute if score ELEMENT0 stack matches 0 run setblock ~ ~-1 ~ air\"} destroy",
+    "setblock ~-1 ~-1 ~16 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"setblock ~1 ~-1 ~1 minecraft:redstone_block\"} destroy",
+    "setblock ~-1 ~-2 ~16 repeating_command_block[conditional=false,facing=west]{auto:0b,Command:\"execute if score ELEMENT0 stack > 0 constants run scoreboard players remove ELEMENT0 stack 1\"} destroy",
+    "setblock ~-2 ~-2 ~16 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"scoreboard players add ELEMENT1 stack 1\"} destroy",
+    
+    "setblock ~0 ~-1 ~17 repeating_command_block[conditional=false,facing=west]{auto:1b,Command:\"execute if score PUSH_VALUE constants matches 0 run setblock ~ ~-1 ~ air\"} destroy",
+    "setblock ~-1 ~-1 ~17 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"setblock ~1 ~-1 ~1 minecraft:redstone_block destroy\"} destroy",
+    "setblock ~-1 ~-2 ~17 repeating_command_block[conditional=false,facing=west]{auto:0b,Command:\"execute if score PUSH_VALUE constants > 0 constants run scoreboard players remove PUSH_VALUE constants 1\"} destroy",
+    "setblock ~-2 ~-2 ~17 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"scoreboard players add ELEMENT0 stack 1\"} destroy",
+
+    "setblock ~0 ~-1 ~18 command_block[conditional=false,facing=west]{auto:0b,Command:\"setblock ~ ~-1 ~ air\"} destroy",
+    "setblock ~-1 ~-2 ~18 command_block[conditional=false,facing=west]{auto:0b,Command:\"scoreboard players add INST_COUNT constants 1\"} destroy",
+    "setblock ~-2 ~-2 ~18 chain_command_block[conditional=true,facing=west]{auto:1b,Command:\"setblock ~-2 ~ ~-14 minecraft:redstone_block\"} destroy",
 ]
 
 NEXT_INST:List[str] = [
@@ -72,7 +130,7 @@ PUSH:Callable[[int, List[str]], List[str]] = lambda nb, args: [
 
 END:Callable[[int], List[str]] = lambda nb: [
     "setblock ~3 ~-2 ~%s command_block[facing=east]{auto:0,Command:\"%s\"} destroy"
-    % (nb, print_color("Fin de l\\'exécution", "green", 1)),
+    % (nb, print_color("Fin de l\\'execution", "green", 1)),
     "setblock ~4 ~-2 ~%s chain_command_block[facing=east,conditional=false]{auto:1,Command:\"%s\"} destroy"
     % (nb, "setblock ~-2 ~ ~ air"),
 ]
